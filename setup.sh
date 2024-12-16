@@ -12,7 +12,8 @@ sudo mkdir -p /usr/share/examshell                    # Ensure the target direct
 sudo cp -r examshell/examshell-cli/* /usr/share/examshell  # Copy examshell-cli to the target folder
 sudo cp examshell/examshell /usr/bin/examshell        # Copy the main examshell script to /usr/bin
 sudo chmod +x /usr/bin/examshell                      # Make the examshell executable
-sudo echo "exam-master-v3.42abudhabi.ae" > /etc/exam_master_host
+sudo touch /etc/exam_master_host
+sudo sh -c 'echo "exam-master-v3.42abudhabi.ae" > /etc/exam_master_host'
 
 # Install Python 3.8 if it does not exist
 if ! python3.8 --version &> /dev/null; then           # Check if Python 3.8 is installed
@@ -30,7 +31,7 @@ fi
 sudo apt install -y cmake                             # Install cmake for building packages like dlib
 
 # Install required Python packages
-pip3 install netaddr imgcat attrdict tendo sentry_sdk opencv-python dlib face_recognition strict_rfc3339
+pip3 install termcolor netaddr imgcat attrdict tendo sentry_sdk opencv-python dlib face_recognition strict_rfc3339
 
 # Upgrade critical Python libraries to avoid compatibility issues
 pip3 install --upgrade urllib3 chardet requests
